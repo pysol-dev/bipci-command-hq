@@ -94,6 +94,90 @@ export default function Navbar() {
     <nav className={`z-50 fixed flex justify-center w-full pointer-events-none ${isMobileMenuOpen ? 'bg-black' : ''} sm:bg-transparent ${isMobileMenuOpen ? 'border-b border-white/20' : ''} sm:border-none`}>
       <div className="w-full max-w-3xl px-4 sm:px-6 lg:mx-8">
         <div className="flex items-center h-16">
+          <div className="flex items-center">
+            <Link href="/" className="flex-shrink-0">
+              <div className="sr-only">Home</div>
+            </Link>
+          </div>
+
+          {/* Title - Left on mobile, centered on desktop */}
+          <div className="flex-1 sm:flex-none">
+            <Link 
+              href={status === 'authenticated' ? "/dashboard" : "/"} 
+              className="text-xl font-bold text-white uppercase pointer-events-auto"
+            >
+              {title?.toUpperCase() || "ORBITAL CTF"}
+            </Link>
+          </div>
+
+          {/* Right side controls */}
+          <div className="flex items-center justify-end flex-1">
+            {/* Mobile Menu Button */}
+            <div className="flex sm:hidden">
+              <button
+                className="pointer-events-auto text-gray-300 hover:text-white"
+                onClick={() => {
+                  setIsMobileMenuOpen(!isMobileMenuOpen);
+                  setIsNavOpen(false);
+                  setIsCrtMenuOpen(false);
+                }}
+              >
+                <TfiMenu className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* Desktop Right Side Controls */}
+            <div className="hidden sm:flex items-center gap-4 pointer-events-auto">
+              {/* Right Navigation Button */}
+              <div className="relative" ref={crtRef}>
+                <button
+                  onClick={() => setIsCrtMenuOpen(!isCrtMenuOpen)}
+                  className={`text-gray-300 hover:text-white py-2 text-sm font-medium flex items-center ${
+                    isCrtMenuOpen ? 'border-b-2 border-white' : 'hover:border-b-2 hover:border-white'
+                  }`}
+                >
+                  Settings
+                </button>
+
+                {/* Settings Menu */}
+                {isCrtMenuOpen && (
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-48 bg-black border">
+                    <div
+                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 cursor-pointer"
+                      onClick={() => toggleEffect('scanlines')}
+                    >
+                      Scanlines {crtEffects.scanlines ? '☑' : '☐'}
+                    </div>
+                    <div
+                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 cursor-pointer"
+                      onClick={() => toggleEffect('flicker')}
+                    >
+                      Screen Flicker {crtEffects.flicker ? '☑' : '☐'}
+                    </div>
+                    <div
+                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 cursor-pointer"
+                      onClick={() => toggleEffect('phosphor')}
+                    >
+                      Text Glow {crtEffects.phosphor ? '☑' : '☐'}
+                    </div>
+                    <div
+                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 cursor-pointer"
+                      onClick={() => toggleEffect('glow')}
+                    >
+                      Background Glow {crtEffects.glow ? '☑' : '☐'}
+                    </div>
+                    <div
+                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 cursor-pointer"
+                      onClick={() => toggleEffect('rollingScan')}
+                    >
+                      Rolling Scan {crtEffects.rollingScan ? '☑' : '☐'}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
           {/* Left Navigation Button - Hidden on mobile */}
           <div className="hidden sm:flex items-center justify-start flex-1">
             <div className="relative" ref={navRef}>
@@ -190,84 +274,6 @@ export default function Navbar() {
                   )}
                 </div>
               )}
-            </div>
-          </div>
-
-          {/* Title - Left on mobile, centered on desktop */}
-          <div className="flex-1 sm:flex-none">
-            <Link 
-              href={status === 'authenticated' ? "/dashboard" : "/"} 
-              className="text-xl font-bold text-white uppercase pointer-events-auto"
-            >
-              {title?.toUpperCase() || "ORBITAL CTF"}
-            </Link>
-          </div>
-
-          {/* Right side controls */}
-          <div className="flex items-center justify-end flex-1">
-            {/* Mobile Menu Button */}
-            <div className="flex sm:hidden">
-              <button
-                className="pointer-events-auto text-gray-300 hover:text-white"
-                onClick={() => {
-                  setIsMobileMenuOpen(!isMobileMenuOpen);
-                  setIsNavOpen(false);
-                  setIsCrtMenuOpen(false);
-                }}
-              >
-                <TfiMenu className="h-6 w-6" />
-              </button>
-            </div>
-
-            {/* Desktop Right Side Controls */}
-            <div className="hidden sm:flex items-center gap-4 pointer-events-auto">
-              {/* Right Navigation Button */}
-              <div className="relative" ref={crtRef}>
-                <button
-                  onClick={() => setIsCrtMenuOpen(!isCrtMenuOpen)}
-                  className={`text-gray-300 hover:text-white py-2 text-sm font-medium flex items-center ${
-                    isCrtMenuOpen ? 'border-b-2 border-white' : 'hover:border-b-2 hover:border-white'
-                  }`}
-                >
-                  Settings
-                </button>
-
-                {/* Settings Menu */}
-                {isCrtMenuOpen && (
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-48 bg-black border">
-                    <div
-                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 cursor-pointer"
-                      onClick={() => toggleEffect('scanlines')}
-                    >
-                      Scanlines {crtEffects.scanlines ? '☑' : '☐'}
-                    </div>
-                    <div
-                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 cursor-pointer"
-                      onClick={() => toggleEffect('flicker')}
-                    >
-                      Screen Flicker {crtEffects.flicker ? '☑' : '☐'}
-                    </div>
-                    <div
-                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 cursor-pointer"
-                      onClick={() => toggleEffect('phosphor')}
-                    >
-                      Text Glow {crtEffects.phosphor ? '☑' : '☐'}
-                    </div>
-                    <div
-                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 cursor-pointer"
-                      onClick={() => toggleEffect('glow')}
-                    >
-                      Background Glow {crtEffects.glow ? '☑' : '☐'}
-                    </div>
-                    <div
-                      className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 cursor-pointer"
-                      onClick={() => toggleEffect('rollingScan')}
-                    >
-                      Rolling Scan {crtEffects.rollingScan ? '☑' : '☐'}
-                    </div>
-                  </div>
-                )}
-              </div>
             </div>
           </div>
 

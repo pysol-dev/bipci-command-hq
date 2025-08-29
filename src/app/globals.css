@@ -200,21 +200,6 @@ body::before {
   color: black;
 }
 
-/* CRT Effects disable class */
-.crt-effects-disabled {
-  background: rgb(var(--background-start-rgb)) !important;
-}
-
-.crt-effects-disabled::before,
-.crt-effects-disabled::after {
-  display: none !important;
-}
-
-.crt-effects-disabled * {
-  text-shadow: none !important;
-  animation: none !important;
-}
-
 /* CRT Effects disable classes */
 .crt-scanlines-disabled::before {
   display: none !important;
@@ -236,38 +221,16 @@ body::before {
 
 .crt-glow-disabled {
   background: rgb(var(--background-start-rgb)) !important;
+}
+
+/* Ensure rolling scan can be disabled via body class */
+.crt-rolling-scan-disabled::before {
+  display: none !important;
 }
 
 @keyframes scan {
   0% { background-position: 0 -100vh; }
   35%, 100% { background-position: 0 100vh; }
-}
-
-/* CRT Effects disable classes */
-.crt-scanlines-disabled::before {
-  display: none !important;
-}
-
-.crt-flicker-disabled::after {
-  display: none !important;
-}
-
-.crt-transform-disabled #__next {
-  transform: none !important;
-  filter: none !important;
-}
-
-.crt-phosphor-disabled * {
-  text-shadow: none !important;
-  animation: none !important;
-}
-
-.crt-glow-disabled {
-  background: rgb(var(--background-start-rgb)) !important;
-}
-
-.crt-rolling-scan-disabled::before {
-  display: none !important;
 }
 
 @layer components {
