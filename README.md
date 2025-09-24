@@ -43,12 +43,14 @@ Before you begin, ensure you have the following installed:
 ## 🚀 Quick Start
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/asynchronous-x/orbital-ctf.git
    cd orbital-ctf
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    # or
@@ -56,16 +58,19 @@ Before you begin, ensure you have the following installed:
    ```
 
 3. **Create a `.env` file**
+
    ```bash
    cp .env.example .env
    ```
 
 4. **Set up the database**
+
    ```bash
    npx prisma migrate reset
    ```
 
 5. **Seed initial challenges**
+
    ```bash
    npm run prisma:seed
    # or
@@ -73,6 +78,7 @@ Before you begin, ensure you have the following installed:
    ```
 
 6. **Start development server**
+
    ```bash
    npm run dev
    # or
@@ -83,8 +89,7 @@ Before you begin, ensure you have the following installed:
 
 ## 📁 Project Structure
 
-```
-orbital-ctf/
+```orbital-ctf/
 ├── src/
 │   ├── app/            # Next.js app router pages
 │   ├── components/     # React components
@@ -151,6 +156,6 @@ This project is licensed under the GPL-3.0 License. See the [LICENSE](LICENSE) f
 
 <div align="center">
 
-Made with 💯 by [Asynchronous-X](https://github.com/asynchronous-x)
+Made with 🧩 by [xeno](https://github.com/pysol-dev)
 
 </div>
