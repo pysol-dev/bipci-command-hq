@@ -9,7 +9,7 @@
 
 <img src="https://raw.githubusercontent.com/asynchronous-x/orbital-ctf/refs/heads/main/src/app/favicon.ico" alt="Orbital CTF Logo" width="200"/>
 
-A retro space-themed Capture The Flag platform built with modern tech stack that actually Just Works™️ 
+A retro space-themed Capture The Fag platform built with modern tech stack that actually Works Tomorrow™️
 
 Experience a CTF in a sleek, dark-themed environment with real-time scoring and team collaboration.
 
